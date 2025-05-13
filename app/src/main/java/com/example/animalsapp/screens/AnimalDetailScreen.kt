@@ -36,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.animalsapp.components.FactItem
 import com.example.animalsapp.models.Animal
 import com.example.animalsapp.service.AnimalService
 import kotlinx.coroutines.launch
