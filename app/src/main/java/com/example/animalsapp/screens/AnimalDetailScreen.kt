@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items // <- CORRECCIÓN IMPORTANTE
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -24,7 +25,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,36 +39,34 @@ import coil3.compose.AsyncImage
 import com.example.animalsapp.components.FactItem
 import com.example.animalsapp.models.Animal
 import com.example.animalsapp.service.AnimalService
-import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
-fun AnimalDetailScreen( innerPadding: PaddingValues, animalId: String){
+fun AnimalDetailScreen(innerPadding: PaddingValues, animalId: String) {
     var BASE_URL = "https://animals.juanfrausto.com/api/"
-    val scope = rememberCoroutineScope()
     var animal by remember {
         mutableStateOf<Animal?>(null)
     }
     var isLoading by remember {
         mutableStateOf(true)
     }
+
     LaunchedEffect(key1 = true) {
-        scope.launch {
-            try {
-                val retrofitBuilder = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                val animalService = retrofitBuilder.create(AnimalService::class.java)
-                animal = animalService.getAnimalById(animalId)
-                Log.i("Animal Detail Screen", animal.toString())
-                isLoading = false
-            } catch (e: Exception) {
-                Log.e("ERROR", e.toString())
-            }
+        try {
+            val retrofitBuilder = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val animalService = retrofitBuilder.create(AnimalService::class.java)
+            animal = animalService.getAnimalById(animalId)
+            Log.i("Animal Detail Screen", animal.toString())
+            isLoading = false
+        } catch (e: Exception) {
+            Log.e("ERROR", e.toString())
         }
     }
+
     if (isLoading) {
         Box(
             modifier = Modifier
@@ -79,7 +77,7 @@ fun AnimalDetailScreen( innerPadding: PaddingValues, animalId: String){
         }
     } else {
         animal?.let { animal ->
-            Column (
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
@@ -144,7 +142,7 @@ fun AnimalDetailScreen( innerPadding: PaddingValues, animalId: String){
 
                 Spacer(modifier = Modifier.padding(vertical = 6.dp))
 
-                LazyRow (
+                LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {

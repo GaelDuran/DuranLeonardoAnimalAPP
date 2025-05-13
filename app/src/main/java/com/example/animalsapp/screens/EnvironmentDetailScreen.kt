@@ -43,7 +43,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Composable
 fun EnvironmentDetailScreen(
     innerPading : PaddingValues,
-    environmentId : String,
+    environmentId: String,
     navController: NavController
 
 ) {
