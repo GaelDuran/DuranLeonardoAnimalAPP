@@ -1,7 +1,9 @@
 package com.example.animalsapp.models
 
+import com.google.gson.annotations.SerializedName
+
 data class Environment(
-    val _id: String,
+    @SerializedName("_id") val id: String,
     val description: String,
     val image: String,
     val name: String
