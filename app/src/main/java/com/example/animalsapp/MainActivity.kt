@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
                                             Image(
-                                                painter = painterResource(id = R.drawable.pets_24dp_e3e3e3_fill0_wght400_grad0_opsz24),
+                                                painter = painterResource(id = R.drawable.animalicon),
                                                 contentDescription = "Animals",
                                                 modifier = Modifier.padding(end = 8.dp).size(32.dp),
                                                 colorFilter = ColorFilter.tint(Color.Black)

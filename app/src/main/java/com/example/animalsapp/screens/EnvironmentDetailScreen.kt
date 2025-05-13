@@ -42,7 +42,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
 fun EnvironmentDetailScreen(
-    innerPading : PaddingValues,
+    innerPadding : PaddingValues,
     environmentId: String,
     navController: NavController
 
@@ -93,7 +93,7 @@ fun EnvironmentDetailScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPading)
+                    .padding(innerPadding)
                     .padding(vertical = 20.dp)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
