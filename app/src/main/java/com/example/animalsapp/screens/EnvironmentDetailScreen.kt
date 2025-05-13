@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
+import com.example.animalsapp.components.AnimalCard
 import com.example.animalsapp.models.Animal
 import com.example.animalsapp.models.Environment
 import com.example.animalsapp.service.AnimalService
@@ -150,6 +151,5 @@ fun EnvironmentDetailScreen(
                 }
             }
         }
-
     }
 }
