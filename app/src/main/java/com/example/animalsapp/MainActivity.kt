@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
                                             Image(
-                                                painter = painterResource(id = R.drawable.environmentnav),
+                                                painter = painterResource(id = R.drawable.environmenticon),
                                                 contentDescription = "Environments",
                                                 modifier = Modifier.padding(end = 8.dp).size(32.dp),
                                                 colorFilter = ColorFilter.tint(Color.Black)
